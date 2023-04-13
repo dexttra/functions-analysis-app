@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Windows.Forms.DataVisualization;
+using System.Text.RegularExpressions;
 
 namespace functions_analysis_app
 {
@@ -15,6 +19,105 @@ namespace functions_analysis_app
         public FormApp()
         {
             InitializeComponent();
+        }
+
+        private void buttonGraphBuild_Click(object sender, EventArgs e)
+        {
+            // Считываем функцию
+            string equation = textBoxEquation.Text;
+
+            // Создаем новую серию данных для графика
+            Series series = new Series();
+            series.ChartType = SeriesChartType.Line;
+            series.BorderWidth = 2;
+
+            // Добавляем серию данных в Chart
+            chartGraph.Series.Clear();
+            chartGraph.Series.Add(series);
+
+            // Определяем границы координатной плоскости
+            chartGraph.ChartAreas[0].AxisX.Minimum = -10;
+            chartGraph.ChartAreas[0].AxisX.Maximum = 10;
+            chartGraph.ChartAreas[0].AxisY.Minimum = -10;
+            chartGraph.ChartAreas[0].AxisY.Maximum = 10;
+
+            // Вычисляем значения функции для каждого значения X и добавляем их в серию данных
+            for (double x = -10; x <= 10; x += 0.1)
+            {
+                double y = Evaluate(equation, x);
+                series.Points.AddXY(x, y);
+            }
+        }
+
+        private double Evaluate(string equation, double x)
+        {
+            // Разделяем строку на массив операторов и операндов
+            string[] operators = new string[] { "*", "/", "+", "-" };
+            string[] tokens = equation.Split(operators, StringSplitOptions.RemoveEmptyEntries);
+
+            // Создаем новый список, в котором будут храниться числовые значения операндов
+            List<double> values = new List<double>();
+
+            // Преобразуем каждый операнд в числовое значение и добавляем его в список values
+            foreach (string token in tokens)
+            {
+                double value;
+                if (double.TryParse(token, out value))
+                {
+                    values.Add(value);
+                }
+                else if (token == "x")
+                {
+                    values.Add(x);
+                }
+                else
+                {
+                    throw new ArgumentException("Недопустимый операнд: " + token);
+                }
+            }
+
+            // Создаем новый список, в котором будут храниться операторы
+            List<string> operatorsList = new List<string>();
+
+            // Добавляем все операторы в список operatorsList
+            foreach (char c in equation)
+            {
+                if (operators.Contains(c.ToString()))
+                {
+                    operatorsList.Add(c.ToString());
+                }
+            }
+
+            // Вычисляем значение выражения, используя операторы и операнды
+            double result = values[0];
+            for (int i = 0; i < operatorsList.Count; i++)
+            {
+                string op = operatorsList[i];
+                double val = values[i + 1];
+
+                switch (op)
+                {
+                    case "*":
+                        result *= val;
+                        break;
+                    case "/":
+                        result /= val;
+                        break;
+                    case "+":
+                        result += val;
+                        break;
+                    case "-":
+                        result -= val;
+                        break;
+                }
+            }
+
+            return result;
+        }
+
+        private void buttonInputInfo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
