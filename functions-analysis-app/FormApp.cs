@@ -19,6 +19,12 @@ namespace functions_analysis_app
         public FormApp()
         {
             InitializeComponent();
+
+            // Определяем границы координатной плоскости
+            chartGraph.ChartAreas[0].AxisX.Minimum = -10;
+            chartGraph.ChartAreas[0].AxisX.Maximum = 10;
+            chartGraph.ChartAreas[0].AxisY.Minimum = -10;
+            chartGraph.ChartAreas[0].AxisY.Maximum = 10;
         }
 
         private void buttonGraphBuild_Click(object sender, EventArgs e)
@@ -35,12 +41,6 @@ namespace functions_analysis_app
             chartGraph.Series.Clear();
             chartGraph.Series.Add(series);
 
-            // Определяем границы координатной плоскости
-            chartGraph.ChartAreas[0].AxisX.Minimum = -10;
-            chartGraph.ChartAreas[0].AxisX.Maximum = 10;
-            chartGraph.ChartAreas[0].AxisY.Minimum = -10;
-            chartGraph.ChartAreas[0].AxisY.Maximum = 10;
-
             // Вычисляем значения функции для каждого значения X и добавляем их в серию данных
             for (double x = -10; x <= 10; x += 0.1)
             {
@@ -53,27 +53,24 @@ namespace functions_analysis_app
         {
             // Разделяем строку на массив операторов и операндов
             string[] operators = new string[] { "*", "/", "+", "-" };
-            string[] tokens = equation.Split(operators, StringSplitOptions.RemoveEmptyEntries);
+            string[] operands = equation.Split(operators, StringSplitOptions.RemoveEmptyEntries);
 
             // Создаем новый список, в котором будут храниться числовые значения операндов
             List<double> values = new List<double>();
 
             // Преобразуем каждый операнд в числовое значение и добавляем его в список values
-            foreach (string token in tokens)
+            foreach (string operand in operands)
             {
-                double value;
-                if (double.TryParse(token, out value))
-                {
-                    values.Add(value);
-                }
-                else if (token == "x")
+ 
+                if (operand == "x")
                 {
                     values.Add(x);
                 }
-                else
+                else 
                 {
-                    throw new ArgumentException("Недопустимый операнд: " + token);
+                    values.Add(int.Parse(operand));
                 }
+              
             }
 
             // Создаем новый список, в котором будут храниться операторы
