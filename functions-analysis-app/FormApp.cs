@@ -41,77 +41,117 @@ namespace functions_analysis_app
             chartGraph.Series.Clear();
             chartGraph.Series.Add(series);
 
+            // Находим постфиксную форму выражения (Reverse Polish Notaion)
+            string postfixNotation = RPN(equation);
+
             // Вычисляем значения функции для каждого значения X и добавляем их в серию данных
             for (double x = -10; x <= 10; x += 0.1)
             {
-                double y = Evaluate(equation, x);
+                double y = Evaluate(postfixNotation, x);
                 series.Points.AddXY(x, y);
             }
         }
 
-        private double Evaluate(string equation, double x)
+        private string RPN(string equation)
         {
-            // Разделяем строку на массив операторов и операндов
-            string[] operators = new string[] { "*", "/", "+", "-" };
-            string[] operands = equation.Split(operators, StringSplitOptions.RemoveEmptyEntries);
-
-            // Создаем новый список, в котором будут храниться числовые значения операндов
-            List<double> values = new List<double>();
-
-            // Преобразуем каждый операнд в числовое значение и добавляем его в список values
-            foreach (string operand in operands)
+            Dictionary<char, int> priority = new Dictionary<char, int>
             {
- 
-                if (operand == "x")
-                {
-                    values.Add(x);
-                }
-                else 
-                {
-                    values.Add(int.Parse(operand));
-                }
-              
-            }
+                { '(', 0 },
+                { ')', 0 },
+                { '+', 1 },
+                { '-', 1 },
+                { '*', 2 },
+                { '/', 2 },
+                { '^', 3 }
+            };
+            Stack<char> operators = new Stack<char>();
+            StringBuilder postfixNotation = new StringBuilder();
 
-            // Создаем новый список, в котором будут храниться операторы
-            List<string> operatorsList = new List<string>();
-
-            // Добавляем все операторы в список operatorsList
-            foreach (char c in equation)
+            for (int i = 0; i < equation.Length; i++)
             {
-                if (operators.Contains(c.ToString()))
+                char el = equation[i];
+                if (priority.ContainsKey(el))
                 {
-                    operatorsList.Add(c.ToString());
+                    if (el != '(')
+                    {
+                        while (operators.Count > 0 && priority[operators.Peek()] >= priority[el])
+                        {
+                            char temp = operators.Pop();
+                            if (temp == '(')
+                                break;
+                            postfixNotation.Append(" ").Append(temp);
+                        }
+                    }
+                    if (el != ')')
+                        operators.Push(el);
                 }
-            }
-
-            // Вычисляем значение выражения, используя операторы и операнды
-            double result = values[0];
-            for (int i = 0; i < operatorsList.Count; i++)
-            {
-                string op = operatorsList[i];
-                double val = values[i + 1];
-
-                switch (op)
+                else if (char.IsLetterOrDigit(el))
                 {
-                    case "*":
-                        result *= val;
-                        break;
-                    case "/":
-                        result /= val;
-                        break;
-                    case "+":
-                        result += val;
-                        break;
-                    case "-":
-                        result -= val;
-                        break;
+                    StringBuilder operand = new StringBuilder();
+                    while (i < equation.Length && (char.IsLetterOrDigit(equation[i]) || equation[i] == '.'))
+                    {
+                        operand.Append(equation[i]);
+                        i++;
+                    }
+                    i--;
+                    if (operand.ToString() == "x")
+                        postfixNotation.Append(" x");
+                    else
+                        postfixNotation.Append(" ").Append(operand);
                 }
             }
 
-            return result;
+            while (operators.Count > 0) 
+                postfixNotation.Append(" ").Append(operators.Pop());
+
+            return (postfixNotation.ToString().Trim());
         }
 
+        private double Evaluate(string postfixNotation, double x)
+        {
+            Stack<double> stack = new Stack<double>();
+            string[] tokens = postfixNotation.Split(' ');
+
+            foreach (string token in tokens)
+            {
+                if (double.TryParse(token, out double operand))
+                {
+                    stack.Push(operand);
+                }
+                else if (token == "x")
+                {
+                    stack.Push(x);
+                }
+                else
+                {
+                    double operand2 = stack.Pop();
+                    double operand1 = stack.Pop();
+
+                    switch (token)
+                    {
+                        case "+":
+                            stack.Push(operand1 + operand2);
+                            break;
+                        case "-":
+                            stack.Push(operand1 - operand2);
+                            break;
+                        case "*":
+                            stack.Push(operand1 * operand2);
+                            break;
+                        case "/":
+                            stack.Push(operand1 / operand2);
+                            break;
+                        case "^":
+                            stack.Push(Math.Pow(operand1, operand2));
+                            break;
+                        default:
+                            throw new ArgumentException("Invalid token: " + token);
+                    }
+                }
+            }
+
+            return stack.Peek(); 
+        }
         private void buttonInputInfo_Click(object sender, EventArgs e)
         {
 
