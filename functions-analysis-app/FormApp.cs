@@ -25,6 +25,7 @@ namespace functions_analysis_app
             chartGraph.ChartAreas[0].AxisX.Maximum = 10;
             chartGraph.ChartAreas[0].AxisY.Minimum = -10;
             chartGraph.ChartAreas[0].AxisY.Maximum = 10;
+
         }
 
         private void buttonGraphBuild_Click(object sender, EventArgs e)
@@ -41,6 +42,8 @@ namespace functions_analysis_app
             chartGraph.Series.Clear();
             chartGraph.Series.Add(series);
 
+            series.Name = equation;
+
             // Находим постфиксную форму выражения (Reverse Polish Notaion)
             string postfixNotation = RPN(equation);
 
@@ -52,8 +55,10 @@ namespace functions_analysis_app
             }
         }
 
+        //RPN - Reverse Polish Notation
         private string RPN(string equation)
         {
+            //Создаем словарь с приоритетом операций
             Dictionary<char, int> priority = new Dictionary<char, int>
             {
                 { '(', 0 },
@@ -64,27 +69,33 @@ namespace functions_analysis_app
                 { '/', 2 },
                 { '^', 3 }
             };
+            //Создаем стек операторов и StringBuilder для постфиксной записи
             Stack<char> operators = new Stack<char>();
             StringBuilder postfixNotation = new StringBuilder();
 
+            //Перебираем каждый символ уравнения
             for (int i = 0; i < equation.Length; i++)
             {
                 char el = equation[i];
+
+                //Проверяем является ли символ операцией
                 if (priority.ContainsKey(el))
                 {
                     if (el != '(')
                     {
+                        //Проверяем приоритет первого элемента стека
                         while (operators.Count > 0 && priority[operators.Peek()] >= priority[el])
                         {
+                            //Если приоритет у новой операции меньше либо равен приоритету предыдущей, то удаляем из стека первую операцию и записываем в постфиксную запись, для сохранения порядка операций
                             char temp = operators.Pop();
                             if (temp == '(')
                                 break;
                             postfixNotation.Append(" ").Append(temp);
                         }
                     }
-                    if (el != ')')
-                        operators.Push(el);
+                    if (el != ')') operators.Push(el);
                 }
+                //Создаем StringBuilder в который записываем операнд и сохраняем в постфиксной записи
                 else if (char.IsLetterOrDigit(el))
                 {
                     StringBuilder operand = new StringBuilder();
@@ -93,16 +104,16 @@ namespace functions_analysis_app
                         operand.Append(equation[i]);
                         i++;
                     }
+                    //Для цикла for
                     i--;
-                    if (operand.ToString() == "x")
-                        postfixNotation.Append(" x");
-                    else
-                        postfixNotation.Append(" ").Append(operand);
+
+                    if (operand.ToString() == "x") postfixNotation.Append(" x");
+                    else postfixNotation.Append(" ").Append(operand);
                 }
             }
 
-            while (operators.Count > 0) 
-                postfixNotation.Append(" ").Append(operators.Pop());
+            //Записываем операции в постфиксную запись
+            while (operators.Count > 0) postfixNotation.Append(" ").Append(operators.Pop());
 
             return (postfixNotation.ToString().Trim());
         }
@@ -149,12 +160,16 @@ namespace functions_analysis_app
                     }
                 }
             }
-
             return stack.Peek(); 
         }
         private void buttonInputInfo_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show(
+        "Вы можете использовать операции: * / ^ + - ( )\r\nДля дробных чисел формат должен быть как образец далее: 0.1455 (разделитель - точка)\r\nМежду числами или операциями пробелы ставить не надо, все записывается подряд.",
+        "Инструкция ввода",
+        MessageBoxButtons.OK,
+        MessageBoxIcon.Information);
         }
     }
 }
+
