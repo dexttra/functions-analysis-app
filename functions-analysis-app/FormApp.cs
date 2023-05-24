@@ -26,6 +26,8 @@ namespace functions_analysis_app
             chartGraph.ChartAreas[0].AxisY.Minimum = -10;
             chartGraph.ChartAreas[0].AxisY.Maximum = 10;
 
+            textBoxResult.ReadOnly = true;
+
         }
 
         private void buttonGraphBuild_Click(object sender, EventArgs e)
@@ -170,6 +172,23 @@ namespace functions_analysis_app
         MessageBoxButtons.OK,
         MessageBoxIcon.Information);
         }
+
+        private void buttonEvaluate_Click(object sender, EventArgs e)
+        {
+           
+            if (comboBoxAnalysis.SelectedIndex == 1)
+            {
+                textBoxResult.Text = FindOyInterception(RPN(textBoxEquation.Text));
+            }
+        }
+
+        private string FindOyInterception(string postfixNotation)
+        {
+            return $"(0, {Evaluate(postfixNotation, 0)})";     
+        }
+
+
+
     }
 }
 
