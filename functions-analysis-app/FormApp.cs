@@ -101,7 +101,7 @@ namespace functions_analysis_app
                 else if (char.IsLetterOrDigit(el))
                 {
                     StringBuilder operand = new StringBuilder();
-                    while (i < equation.Length && (char.IsLetterOrDigit(equation[i]) || equation[i] == '.'))
+                    while (i < equation.Length && (char.IsLetterOrDigit(equation[i])))
                     {
                         operand.Append(equation[i]);
                         i++;
@@ -167,7 +167,7 @@ namespace functions_analysis_app
         private void buttonInputInfo_Click(object sender, EventArgs e)
         {
             MessageBox.Show(
-        "Вы можете использовать операции: * / ^ + - ( )\r\nДля дробных чисел формат должен быть как образец далее: 0.1455 (разделитель - точка)\r\nМежду числами или операциями пробелы ставить не надо, все записывается подряд.",
+        "Вы можете использовать операции: * / ^ + - ( )\r\nМежду числами или операциями пробелы ставить не надо, все записывается подряд.",
         "Инструкция ввода",
         MessageBoxButtons.OK,
         MessageBoxIcon.Information);
@@ -186,8 +186,6 @@ namespace functions_analysis_app
         {
             return $"(0, {Evaluate(postfixNotation, 0)})";     
         }
-
-
 
     }
 }
