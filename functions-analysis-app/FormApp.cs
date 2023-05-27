@@ -29,20 +29,44 @@ namespace functions_analysis_app
 
             textBoxResult.ReadOnly = true;
 
+            chartGraph.Series.Clear();
+
+
         }
 
         private void buttonGraphBuild_Click(object sender, EventArgs e)
         {
             // Считываем функцию
             string equation = textBoxEquation.Text;
-
+          
             // Создаем новую серию данных для графика
             Series series = new Series();
             series.ChartType = SeriesChartType.Line;
             series.BorderWidth = 2;
 
+            // Устанавливаем жирную линию для оси Y = 0
+            chartGraph.ChartAreas[0].AxisY.StripLines.Add(new StripLine
+            {
+                Interval = 0,  
+                StripWidth = 0, 
+                BackColor = Color.Black, 
+                BorderColor = Color.Black, 
+                BorderWidth = 2, 
+                BorderDashStyle = ChartDashStyle.Solid 
+            });
+
+            // Устанавливаем жирную линию для оси X = 0
+            chartGraph.ChartAreas[0].AxisX.StripLines.Add(new StripLine
+            {
+                Interval = 0, 
+                StripWidth = 0, 
+                BackColor = Color.Black, 
+                BorderColor = Color.Black, 
+                BorderWidth = 2, 
+                BorderDashStyle = ChartDashStyle.Solid 
+            });
+
             // Добавляем серию данных в Chart
-            chartGraph.Series.Clear();
             chartGraph.Series.Add(series);
 
             series.Name = equation;
@@ -56,6 +80,7 @@ namespace functions_analysis_app
                 double y = Evaluate(postfixNotation, x);
                 series.Points.AddXY(x, y);
             }
+           
         }
 
         //RPN - Reverse Polish Notation
@@ -258,8 +283,45 @@ namespace functions_analysis_app
             else return "Функций ни чётная, ни нечётная";
         }
 
+        private void buttonGraphClear_Click(object sender, EventArgs e)
+        {
+            chartGraph.Series.Clear();
+        }
 
 
+        private void buttonGraphSave_Click(object sender, EventArgs e)
+        {
+            // Отображаем диалоговое окно для сохранения файла
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "PNG Image|*.png|JPEG Image|*.jpg";
+            saveFileDialog.Title = "Сохранить график";
+            saveFileDialog.ShowDialog();
+
+            if (saveFileDialog.FileName != "")
+            {
+                string extension = System.IO.Path.GetExtension(saveFileDialog.FileName);
+                ChartImageFormat imageFormat;
+
+                switch (extension)
+                {
+                    case ".png":
+                        imageFormat = ChartImageFormat.Png;
+                        break;
+                    case ".jpg":
+                        imageFormat = ChartImageFormat.Jpeg;
+                        break;
+                    default:
+                        MessageBox.Show("Неподдерживаемый формат изображения.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                }
+
+                // Сохраняем график в выбранном формате
+                chartGraph.SaveImage(saveFileDialog.FileName, imageFormat);
+                MessageBox.Show("График успешно сохранен.", "Сохранение графика", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+  
     }
 }
 
