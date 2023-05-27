@@ -27,10 +27,31 @@ namespace functions_analysis_app
             chartGraph.ChartAreas[0].AxisY.Minimum = -10;
             chartGraph.ChartAreas[0].AxisY.Maximum = 10;
 
-            textBoxResult.ReadOnly = true;
-
             chartGraph.Series.Clear();
 
+            // Устанавливаем жирную линию для оси Y = 0
+            chartGraph.ChartAreas[0].AxisY.StripLines.Add(new StripLine
+            {
+                Interval = 0,
+                StripWidth = 0,
+                BackColor = Color.Black,
+                BorderColor = Color.Black,
+                BorderWidth = 2,
+                BorderDashStyle = ChartDashStyle.Solid
+            });
+
+            // Устанавливаем жирную линию для оси X = 0
+            chartGraph.ChartAreas[0].AxisX.StripLines.Add(new StripLine
+            {
+                Interval = 0,
+                StripWidth = 0,
+                BackColor = Color.Black,
+                BorderColor = Color.Black,
+                BorderWidth = 2,
+                BorderDashStyle = ChartDashStyle.Solid
+            });
+
+            textBoxResult.ReadOnly = true;
 
         }
 
@@ -43,28 +64,6 @@ namespace functions_analysis_app
             Series series = new Series();
             series.ChartType = SeriesChartType.Line;
             series.BorderWidth = 2;
-
-            // Устанавливаем жирную линию для оси Y = 0
-            chartGraph.ChartAreas[0].AxisY.StripLines.Add(new StripLine
-            {
-                Interval = 0,  
-                StripWidth = 0, 
-                BackColor = Color.Black, 
-                BorderColor = Color.Black, 
-                BorderWidth = 2, 
-                BorderDashStyle = ChartDashStyle.Solid 
-            });
-
-            // Устанавливаем жирную линию для оси X = 0
-            chartGraph.ChartAreas[0].AxisX.StripLines.Add(new StripLine
-            {
-                Interval = 0, 
-                StripWidth = 0, 
-                BackColor = Color.Black, 
-                BorderColor = Color.Black, 
-                BorderWidth = 2, 
-                BorderDashStyle = ChartDashStyle.Solid 
-            });
 
             // Добавляем серию данных в Chart
             chartGraph.Series.Add(series);
