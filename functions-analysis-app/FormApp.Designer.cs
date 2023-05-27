@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormApp));
             this.chartGraph = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.buttonGraphBuild = new System.Windows.Forms.Button();
@@ -42,6 +42,7 @@
             this.buttonEvaluate = new System.Windows.Forms.Button();
             this.labelAnalysis = new System.Windows.Forms.Label();
             this.textBoxResult = new System.Windows.Forms.TextBox();
+            this.labelGraph = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chartGraph)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFunction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEqual)).BeginInit();
@@ -49,26 +50,26 @@
             // 
             // chartGraph
             // 
-            chartArea4.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
-            chartArea4.AxisX.Interval = 1D;
-            chartArea4.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea4.AxisX2.Interval = 1D;
-            chartArea4.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
-            chartArea4.AxisY.Interval = 1D;
-            chartArea4.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea4.AxisY2.Interval = 1D;
-            chartArea4.Name = "ChartArea1";
-            this.chartGraph.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chartGraph.Legends.Add(legend4);
+            chartArea2.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea2.AxisX.Interval = 1D;
+            chartArea2.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea2.AxisX2.Interval = 1D;
+            chartArea2.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea2.AxisY.Interval = 1D;
+            chartArea2.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea2.AxisY2.Interval = 1D;
+            chartArea2.Name = "ChartArea1";
+            this.chartGraph.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartGraph.Legends.Add(legend2);
             this.chartGraph.Location = new System.Drawing.Point(0, 96);
             this.chartGraph.Name = "chartGraph";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chartGraph.Series.Add(series4);
-            this.chartGraph.Size = new System.Drawing.Size(578, 421);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartGraph.Series.Add(series2);
+            this.chartGraph.Size = new System.Drawing.Size(820, 551);
             this.chartGraph.TabIndex = 0;
             this.chartGraph.Text = "chart1";
             // 
@@ -77,9 +78,9 @@
             this.buttonGraphBuild.BackColor = System.Drawing.SystemColors.Info;
             this.buttonGraphBuild.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buttonGraphBuild.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonGraphBuild.Location = new System.Drawing.Point(817, 51);
+            this.buttonGraphBuild.Location = new System.Drawing.Point(978, 53);
             this.buttonGraphBuild.Name = "buttonGraphBuild";
-            this.buttonGraphBuild.Size = new System.Drawing.Size(215, 32);
+            this.buttonGraphBuild.Size = new System.Drawing.Size(362, 32);
             this.buttonGraphBuild.TabIndex = 1;
             this.buttonGraphBuild.Text = "Построить график";
             this.buttonGraphBuild.UseVisualStyleBackColor = false;
@@ -88,7 +89,7 @@
             // textBoxEquation
             // 
             this.textBoxEquation.Font = new System.Drawing.Font("Century", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxEquation.Location = new System.Drawing.Point(522, 28);
+            this.textBoxEquation.Location = new System.Drawing.Point(683, 28);
             this.textBoxEquation.Name = "textBoxEquation";
             this.textBoxEquation.Size = new System.Drawing.Size(289, 36);
             this.textBoxEquation.TabIndex = 2;
@@ -97,9 +98,9 @@
             // 
             this.pictureBoxFunction.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxFunction.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxFunction.Image")));
-            this.pictureBoxFunction.Location = new System.Drawing.Point(361, 18);
+            this.pictureBoxFunction.Location = new System.Drawing.Point(522, 18);
             this.pictureBoxFunction.Name = "pictureBoxFunction";
-            this.pictureBoxFunction.Size = new System.Drawing.Size(102, 55);
+            this.pictureBoxFunction.Size = new System.Drawing.Size(102, 52);
             this.pictureBoxFunction.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxFunction.TabIndex = 3;
             this.pictureBoxFunction.TabStop = false;
@@ -110,9 +111,9 @@
             this.buttonInputInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buttonInputInfo.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonInputInfo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonInputInfo.Location = new System.Drawing.Point(817, 12);
+            this.buttonInputInfo.Location = new System.Drawing.Point(978, 12);
             this.buttonInputInfo.Name = "buttonInputInfo";
-            this.buttonInputInfo.Size = new System.Drawing.Size(215, 33);
+            this.buttonInputInfo.Size = new System.Drawing.Size(362, 35);
             this.buttonInputInfo.TabIndex = 6;
             this.buttonInputInfo.Text = "Инструкция ввода";
             this.buttonInputInfo.UseVisualStyleBackColor = false;
@@ -122,7 +123,7 @@
             // 
             this.pictureBoxEqual.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxEqual.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxEqual.Image")));
-            this.pictureBoxEqual.Location = new System.Drawing.Point(469, 28);
+            this.pictureBoxEqual.Location = new System.Drawing.Point(630, 28);
             this.pictureBoxEqual.Name = "pictureBoxEqual";
             this.pictureBoxEqual.Size = new System.Drawing.Size(47, 36);
             this.pictureBoxEqual.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -134,10 +135,11 @@
             this.comboBoxAnalysis.FormattingEnabled = true;
             this.comboBoxAnalysis.Items.AddRange(new object[] {
             "Найти пересечения графика с Ox",
-            "Найти пересечения графика с Oy"});
-            this.comboBoxAnalysis.Location = new System.Drawing.Point(584, 143);
+            "Найти пересечения графика с Oy",
+            "Чётность и нечётность функции"});
+            this.comboBoxAnalysis.Location = new System.Drawing.Point(845, 184);
             this.comboBoxAnalysis.Name = "comboBoxAnalysis";
-            this.comboBoxAnalysis.Size = new System.Drawing.Size(227, 21);
+            this.comboBoxAnalysis.Size = new System.Drawing.Size(256, 21);
             this.comboBoxAnalysis.TabIndex = 7;
             // 
             // buttonEvaluate
@@ -146,9 +148,9 @@
             this.buttonEvaluate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buttonEvaluate.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonEvaluate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonEvaluate.Location = new System.Drawing.Point(817, 134);
+            this.buttonEvaluate.Location = new System.Drawing.Point(1107, 175);
             this.buttonEvaluate.Name = "buttonEvaluate";
-            this.buttonEvaluate.Size = new System.Drawing.Size(215, 36);
+            this.buttonEvaluate.Size = new System.Drawing.Size(233, 36);
             this.buttonEvaluate.TabIndex = 8;
             this.buttonEvaluate.Text = "Рассчитать";
             this.buttonEvaluate.UseVisualStyleBackColor = false;
@@ -158,20 +160,31 @@
             // 
             this.labelAnalysis.AutoSize = true;
             this.labelAnalysis.BackColor = System.Drawing.Color.Transparent;
-            this.labelAnalysis.Font = new System.Drawing.Font("Sitka Small", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelAnalysis.Location = new System.Drawing.Point(634, 96);
+            this.labelAnalysis.Font = new System.Drawing.Font("Sitka Small", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelAnalysis.Location = new System.Drawing.Point(888, 118);
             this.labelAnalysis.Name = "labelAnalysis";
-            this.labelAnalysis.Size = new System.Drawing.Size(330, 35);
+            this.labelAnalysis.Size = new System.Drawing.Size(402, 43);
             this.labelAnalysis.TabIndex = 9;
             this.labelAnalysis.Text = "Исследование функции";
             // 
             // textBoxResult
             // 
-            this.textBoxResult.Location = new System.Drawing.Point(584, 185);
+            this.textBoxResult.Location = new System.Drawing.Point(845, 226);
             this.textBoxResult.Multiline = true;
             this.textBoxResult.Name = "textBoxResult";
-            this.textBoxResult.Size = new System.Drawing.Size(448, 114);
+            this.textBoxResult.Size = new System.Drawing.Size(495, 114);
             this.textBoxResult.TabIndex = 11;
+            // 
+            // labelGraph
+            // 
+            this.labelGraph.AutoSize = true;
+            this.labelGraph.BackColor = System.Drawing.Color.Transparent;
+            this.labelGraph.Font = new System.Drawing.Font("Sitka Small", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelGraph.Location = new System.Drawing.Point(12, 18);
+            this.labelGraph.Name = "labelGraph";
+            this.labelGraph.Size = new System.Drawing.Size(167, 52);
+            this.labelGraph.TabIndex = 12;
+            this.labelGraph.Text = "График";
             // 
             // FormApp
             // 
@@ -179,7 +192,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1044, 526);
+            this.ClientSize = new System.Drawing.Size(1370, 659);
+            this.Controls.Add(this.labelGraph);
             this.Controls.Add(this.textBoxResult);
             this.Controls.Add(this.labelAnalysis);
             this.Controls.Add(this.buttonEvaluate);
@@ -215,6 +229,7 @@
         private System.Windows.Forms.Button buttonEvaluate;
         private System.Windows.Forms.Label labelAnalysis;
         private System.Windows.Forms.TextBox textBoxResult;
+        private System.Windows.Forms.Label labelGraph;
     }
 }
 

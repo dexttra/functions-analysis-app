@@ -16,6 +16,7 @@ namespace functions_analysis_app
 {
     public partial class FormApp : Form
     {
+
         public FormApp()
         {
             InitializeComponent();
@@ -167,7 +168,7 @@ namespace functions_analysis_app
         private void buttonInputInfo_Click(object sender, EventArgs e)
         {
             MessageBox.Show(
-        "Вы можете использовать операции: * / ^ + - ( )\r\nМежду числами или операциями пробелы ставить не надо, все записывается подряд.",
+        "Вы можете использовать операции: * / ^ + - ( )\r\nВсе записывается подряд, без пробелов.",
         "Инструкция ввода",
         MessageBoxButtons.OK,
         MessageBoxIcon.Information);
@@ -175,17 +176,89 @@ namespace functions_analysis_app
 
         private void buttonEvaluate_Click(object sender, EventArgs e)
         {
-           
+            if (comboBoxAnalysis.SelectedIndex == 0)
+            {
+                textBoxResult.Text = FindXInterceptions(textBoxEquation.Text);
+            }
+
             if (comboBoxAnalysis.SelectedIndex == 1)
             {
-                textBoxResult.Text = FindOyInterception(RPN(textBoxEquation.Text));
+                textBoxResult.Text = FindYInterception(textBoxEquation.Text);
+            }
+            if (comboBoxAnalysis.SelectedIndex == 2)
+            {
+                textBoxResult.Text = EvenOrOdd(textBoxEquation.Text);
+            }
+
+        }
+
+        private string FindXInterceptions(string equation)
+        {
+            List<double> xIntercepts = new List<double>();
+
+            for (double x = -10; x <= 10; x += 0.1)
+            {
+                double y = Evaluate(RPN(equation), x);
+                if (Math.Abs(y) < 0.001) 
+                {
+                    xIntercepts.Add(x);
+                }
+            }
+
+            if (xIntercepts.Count == 0)
+            {
+                return "Нет пересечений с Ox";
+            }
+            else
+            {
+                StringBuilder result = new StringBuilder("Пересечения с Ox: ");
+                foreach (double intercept in xIntercepts)
+                {
+                    result.Append("(").Append(intercept.ToString("0.00")).Append(", 0) ");
+                }
+                return result.ToString();
             }
         }
 
-        private string FindOyInterception(string postfixNotation)
+
+
+
+
+
+        private string FindYInterception(string equation)
         {
-            return $"(0, {Evaluate(postfixNotation, 0)})";     
+            double yIntercept = Evaluate(RPN(equation), 0);
+
+            if (double.IsInfinity(yIntercept)) return "Нет пересечений с Oy";
+            else return $"Пересечение с Oy: (0, {yIntercept})";        
         }
+
+        private string FindDomain(string equation)
+        {
+            if (equation.Contains("/x"))
+            {
+                return "Область определения: (-∞, 0) U (0, +∞)";
+            }
+            else
+            {
+                return "Область определения: R";
+            }
+        }
+        private string EvenOrOdd(string equation)
+        {
+            Random random = new Random();
+            int rndNumber = random.Next(-5000, 5000);
+            string postfixNotation = RPN(equation);
+
+            double num1 = Evaluate(postfixNotation, rndNumber);
+            double num2 = Evaluate(postfixNotation, -rndNumber);
+
+            if (num1 == num2) return "Функция является чётной";
+            else if (num2 == -num1) return "Функция является нечётной";
+            else return "Функций ни чётная, ни нечётная";
+        }
+
+
 
     }
 }
