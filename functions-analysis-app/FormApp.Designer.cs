@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormApp));
             this.chartGraph = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.buttonGraphBuild = new System.Windows.Forms.Button();
@@ -52,25 +52,25 @@
             // 
             // chartGraph
             // 
-            chartArea2.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
-            chartArea2.AxisX.Interval = 1D;
-            chartArea2.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea2.AxisX2.Interval = 1D;
-            chartArea2.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
-            chartArea2.AxisY.Interval = 1D;
-            chartArea2.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea2.AxisY2.Interval = 1D;
-            chartArea2.Name = "ChartArea1";
-            this.chartGraph.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartGraph.Legends.Add(legend2);
+            chartArea1.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea1.AxisX.Interval = 1D;
+            chartArea1.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea1.AxisX2.Interval = 1D;
+            chartArea1.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea1.AxisY.Interval = 1D;
+            chartArea1.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea1.AxisY2.Interval = 1D;
+            chartArea1.Name = "ChartArea1";
+            this.chartGraph.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartGraph.Legends.Add(legend1);
             this.chartGraph.Location = new System.Drawing.Point(1, 96);
             this.chartGraph.Name = "chartGraph";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartGraph.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartGraph.Series.Add(series1);
             this.chartGraph.Size = new System.Drawing.Size(770, 624);
             this.chartGraph.TabIndex = 0;
             this.chartGraph.Text = "chart1";
@@ -140,12 +140,12 @@
             // 
             this.comboBoxAnalysis.FormattingEnabled = true;
             this.comboBoxAnalysis.Items.AddRange(new object[] {
-            "Найти пересечения графика с Ox",
+            "Найти пересечения графика с Ox (в целых точках)",
             "Найти пересечения графика с Oy",
             "Чётность и нечётность функции"});
             this.comboBoxAnalysis.Location = new System.Drawing.Point(801, 257);
             this.comboBoxAnalysis.Name = "comboBoxAnalysis";
-            this.comboBoxAnalysis.Size = new System.Drawing.Size(275, 21);
+            this.comboBoxAnalysis.Size = new System.Drawing.Size(336, 21);
             this.comboBoxAnalysis.TabIndex = 7;
             // 
             // buttonEvaluate
@@ -156,9 +156,9 @@
             this.buttonEvaluate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonEvaluate.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonEvaluate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonEvaluate.Location = new System.Drawing.Point(1094, 248);
+            this.buttonEvaluate.Location = new System.Drawing.Point(1143, 248);
             this.buttonEvaluate.Name = "buttonEvaluate";
-            this.buttonEvaluate.Size = new System.Drawing.Size(233, 33);
+            this.buttonEvaluate.Size = new System.Drawing.Size(184, 33);
             this.buttonEvaluate.TabIndex = 8;
             this.buttonEvaluate.Text = "Рассчитать";
             this.buttonEvaluate.UseVisualStyleBackColor = false;

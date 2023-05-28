@@ -59,7 +59,7 @@ namespace functions_analysis_app
         {
             // Считываем функцию
             string equation = textBoxEquation.Text;
-          
+
             // Создаем новую серию данных для графика
             Series series = new Series();
             series.ChartType = SeriesChartType.Line;
@@ -79,7 +79,7 @@ namespace functions_analysis_app
                 double y = Evaluate(postfixNotation, x);
                 series.Points.AddXY(x, y);
             }
-           
+
         }
 
         //RPN - Reverse Polish Notation
@@ -187,7 +187,7 @@ namespace functions_analysis_app
                     }
                 }
             }
-            return stack.Peek(); 
+            return stack.Peek();
         }
         private void buttonInputInfo_Click(object sender, EventArgs e)
         {
@@ -218,35 +218,25 @@ namespace functions_analysis_app
 
         private string FindXInterceptions(string equation)
         {
-            List<double> xIntercepts = new List<double>();
-
-            for (double x = -10; x <= 10; x += 0.1)
+            List<string> interceptions = new List<string>();
+            for (int x = -50; x <= 50; x++)
             {
                 double y = Evaluate(RPN(equation), x);
-                if (Math.Abs(y) < 0.001) 
+                if (y == 0)
                 {
-                    xIntercepts.Add(x);
+                    interceptions.Add($"({x}, 0)");
                 }
             }
 
-            if (xIntercepts.Count == 0)
+            if (interceptions.Count == 0)
             {
                 return "Нет пересечений с Ox";
             }
             else
             {
-                StringBuilder result = new StringBuilder("Пересечения с Ox: ");
-                foreach (double intercept in xIntercepts)
-                {
-                    result.Append("(").Append(intercept.ToString("0.00")).Append(", 0) ");
-                }
-                return result.ToString();
+                return "Пересечения с Ox: " + string.Join(", ", interceptions);
             }
         }
-
-
-
-
 
 
         private string FindYInterception(string equation)
@@ -254,7 +244,7 @@ namespace functions_analysis_app
             double yIntercept = Evaluate(RPN(equation), 0);
 
             if (double.IsInfinity(yIntercept)) return "Нет пересечений с Oy";
-            else return $"Пересечение с Oy: (0, {yIntercept})";        
+            else return $"Пересечение с Oy: (0, {yIntercept})";
         }
 
         private string FindDomain(string equation)
@@ -320,7 +310,7 @@ namespace functions_analysis_app
             }
         }
 
-  
+
     }
 }
 
