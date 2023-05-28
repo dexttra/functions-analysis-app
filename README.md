@@ -25,6 +25,6 @@
 
 3. Версия 0,3
    - Возможность сохранения графика.
-
-
+**Демонстрация проекта**
+![demonstration](https://github.com/dlaliev/functions-analysis-app/blob/master/functions-analysis-app/images/demonstration.png?raw=true)
 
