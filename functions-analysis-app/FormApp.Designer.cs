@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormApp));
             this.chartGraph = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.buttonGraphBuild = new System.Windows.Forms.Button();
@@ -52,25 +52,25 @@
             // 
             // chartGraph
             // 
-            chartArea3.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
-            chartArea3.AxisX.Interval = 1D;
-            chartArea3.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea3.AxisX2.Interval = 1D;
-            chartArea3.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
-            chartArea3.AxisY.Interval = 1D;
-            chartArea3.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea3.AxisY2.Interval = 1D;
-            chartArea3.Name = "ChartArea1";
-            this.chartGraph.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chartGraph.Legends.Add(legend3);
+            chartArea2.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea2.AxisX.Interval = 1D;
+            chartArea2.AxisX2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea2.AxisX2.Interval = 1D;
+            chartArea2.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.True;
+            chartArea2.AxisY.Interval = 1D;
+            chartArea2.AxisY2.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea2.AxisY2.Interval = 1D;
+            chartArea2.Name = "ChartArea1";
+            this.chartGraph.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartGraph.Legends.Add(legend2);
             this.chartGraph.Location = new System.Drawing.Point(1, 96);
             this.chartGraph.Name = "chartGraph";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chartGraph.Series.Add(series3);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartGraph.Series.Add(series2);
             this.chartGraph.Size = new System.Drawing.Size(770, 624);
             this.chartGraph.TabIndex = 0;
             this.chartGraph.Text = "chart1";
@@ -82,9 +82,9 @@
             this.buttonGraphBuild.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonGraphBuild.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonGraphBuild.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonGraphBuild.Location = new System.Drawing.Point(939, 53);
+            this.buttonGraphBuild.Location = new System.Drawing.Point(939, 12);
             this.buttonGraphBuild.Name = "buttonGraphBuild";
-            this.buttonGraphBuild.Size = new System.Drawing.Size(271, 32);
+            this.buttonGraphBuild.Size = new System.Drawing.Size(224, 31);
             this.buttonGraphBuild.TabIndex = 1;
             this.buttonGraphBuild.Text = "Добавить функцию";
             this.buttonGraphBuild.UseVisualStyleBackColor = false;
@@ -117,9 +117,9 @@
             this.buttonInputInfo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonInputInfo.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonInputInfo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonInputInfo.Location = new System.Drawing.Point(939, 12);
+            this.buttonInputInfo.Location = new System.Drawing.Point(939, 51);
             this.buttonInputInfo.Name = "buttonInputInfo";
-            this.buttonInputInfo.Size = new System.Drawing.Size(271, 35);
+            this.buttonInputInfo.Size = new System.Drawing.Size(224, 31);
             this.buttonInputInfo.TabIndex = 6;
             this.buttonInputInfo.Text = "Инструкция ввода";
             this.buttonInputInfo.UseVisualStyleBackColor = false;
@@ -143,9 +143,9 @@
             "Найти пересечения графика с Ox",
             "Найти пересечения графика с Oy",
             "Чётность и нечётность функции"});
-            this.comboBoxAnalysis.Location = new System.Drawing.Point(818, 367);
+            this.comboBoxAnalysis.Location = new System.Drawing.Point(801, 257);
             this.comboBoxAnalysis.Name = "comboBoxAnalysis";
-            this.comboBoxAnalysis.Size = new System.Drawing.Size(287, 21);
+            this.comboBoxAnalysis.Size = new System.Drawing.Size(275, 21);
             this.comboBoxAnalysis.TabIndex = 7;
             // 
             // buttonEvaluate
@@ -156,9 +156,9 @@
             this.buttonEvaluate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonEvaluate.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonEvaluate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonEvaluate.Location = new System.Drawing.Point(1111, 355);
+            this.buttonEvaluate.Location = new System.Drawing.Point(1094, 248);
             this.buttonEvaluate.Name = "buttonEvaluate";
-            this.buttonEvaluate.Size = new System.Drawing.Size(233, 39);
+            this.buttonEvaluate.Size = new System.Drawing.Size(233, 33);
             this.buttonEvaluate.TabIndex = 8;
             this.buttonEvaluate.Text = "Рассчитать";
             this.buttonEvaluate.UseVisualStyleBackColor = false;
@@ -169,7 +169,7 @@
             this.labelAnalysis.AutoSize = true;
             this.labelAnalysis.BackColor = System.Drawing.Color.Transparent;
             this.labelAnalysis.Font = new System.Drawing.Font("Sitka Small", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelAnalysis.Location = new System.Drawing.Point(884, 300);
+            this.labelAnalysis.Location = new System.Drawing.Point(854, 190);
             this.labelAnalysis.Name = "labelAnalysis";
             this.labelAnalysis.Size = new System.Drawing.Size(402, 43);
             this.labelAnalysis.TabIndex = 9;
@@ -177,10 +177,10 @@
             // 
             // textBoxResult
             // 
-            this.textBoxResult.Location = new System.Drawing.Point(818, 412);
+            this.textBoxResult.Location = new System.Drawing.Point(801, 302);
             this.textBoxResult.Multiline = true;
             this.textBoxResult.Name = "textBoxResult";
-            this.textBoxResult.Size = new System.Drawing.Size(526, 169);
+            this.textBoxResult.Size = new System.Drawing.Size(526, 91);
             this.textBoxResult.TabIndex = 11;
             // 
             // labelGraph
@@ -201,9 +201,9 @@
             this.buttonGraphClear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonGraphClear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonGraphClear.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonGraphClear.Location = new System.Drawing.Point(826, 96);
+            this.buttonGraphClear.Location = new System.Drawing.Point(777, 648);
             this.buttonGraphClear.Name = "buttonGraphClear";
-            this.buttonGraphClear.Size = new System.Drawing.Size(232, 41);
+            this.buttonGraphClear.Size = new System.Drawing.Size(210, 33);
             this.buttonGraphClear.TabIndex = 13;
             this.buttonGraphClear.Text = "Очистить плоскость";
             this.buttonGraphClear.UseVisualStyleBackColor = false;
@@ -216,9 +216,9 @@
             this.buttonGraphSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonGraphSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonGraphSave.Font = new System.Drawing.Font("Sitka Small", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonGraphSave.Location = new System.Drawing.Point(826, 153);
+            this.buttonGraphSave.Location = new System.Drawing.Point(777, 687);
             this.buttonGraphSave.Name = "buttonGraphSave";
-            this.buttonGraphSave.Size = new System.Drawing.Size(232, 41);
+            this.buttonGraphSave.Size = new System.Drawing.Size(210, 33);
             this.buttonGraphSave.TabIndex = 14;
             this.buttonGraphSave.Text = "Сохранить график";
             this.buttonGraphSave.UseVisualStyleBackColor = false;
