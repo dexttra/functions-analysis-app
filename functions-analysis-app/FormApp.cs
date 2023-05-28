@@ -309,8 +309,6 @@ namespace functions_analysis_app
                 MessageBox.Show("График успешно сохранен.", "Сохранение графика", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
-
     }
 }
 
