@@ -1,33 +1,28 @@
-# Курсовая работа "Программа для анализа функций"
-*Внимание! Приложение использует . NET Framework 4.7.2*
-## ТЕХНИЧЕСКОЕ ЗАДАНИЕ
+## 📈 Desktop application for functional analysis and graph plotting.
+### Technical task
 
-**Назначение разработки**
+#### 🌀 Project Purpose
+A desktop application for exploring functions and plotting their graphs. The user inputs a function equation into a special field. After pressing the "Plot Graph" button, the graph is rendered on the screen.
 
-Оконное приложение для исследования функции и построения её графика. В специально отведенное поле вводится уравнение функции. После чего пользователь нажимает на кнопку “Построить график” и на экране отрисовывается график.
+#### 🌀 Features
+- Plotting the graph of a function.
+- Ability to add multiple functions.
+- Finding intersection points of the function graph with the Ox and Oy axes.
+- Clearing the coordinate plane.
+- Ability to save the function graph as an image.
 
-**Функционал**
+#### 🌀 Implementation Stages
 
-1. Отрисовка графика функции.
-2. Возможность добавить несколько функций.
-3. Нахождение точек пересечения графика функции с осями Ox и Oy.
-4. Очистка координатной плоскости.
-5. Возможность сохранить график функции.
+Version 0.1
+- Plotting the graph of a function.
 
-**Этапы реализации**
+Version 0.2
+- Plotting graphs of multiple functions.
+- Adding function analysis elements.
 
-1. Версия 0,1
-   - Отрисовка графика функции.
-
-2. Версия 0,2
-   - Построение графиков нескольких функций.
-   - Добавление элементов анализа функции.
-
-3. Версия 0,3
-   - Возможность сохранения графика.
-
-
-## Демонстрация проекта
-
+Version 0.3
+- Ability to save the graph.
+  
+#### 🌀 Project Demonstration
 ![demonstration](https://github.com/dlaliev/functions-analysis-app/blob/master/functions-analysis-app/images/demonstration.png?raw=true)
 
